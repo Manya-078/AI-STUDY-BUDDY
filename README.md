@@ -29,4 +29,5 @@ Upload GitHub repo and add Api key in Advance setting
 
 After Successful Deploy You get Public url.
 
+## Access my Public url:
 https://ai-study-buddy-8h5zcbzihlrefndsbt3vyn.streamlit.app/
