@@ -1,16 +1,15 @@
 import streamlit as st
 import google.generativeai as genai
 import os
-from dotenv import load_dotenv
 
 # ========================
-# Load API Key
+# Load API Key from Streamlit Secrets
 # ========================
-load_dotenv()
-API_KEY = st.secrets["GEMINI_API_KEY"]
+# Make sure you've added GEMINI_API_KEY in Streamlit Cloud Secrets
+API_KEY = st.secrets.get("GEMINI_API_KEY")
 
 if not API_KEY:
-    st.error("⚠️ API key not found! Please add GEMINI_API_KEY in your .env file.")
+    st.error("⚠️ API key not found! Please add GEMINI_API_KEY in Streamlit Secrets.")
 else:
     genai.configure(api_key=API_KEY)
 
@@ -128,7 +127,7 @@ st.markdown(
 # Hero Section (Color Only)
 # ========================
 st.markdown(
-    f"""
+    """
     <div class="hero">
         <h1>✨ AI StudyBuddy</h1>
         <p>Your personal AI-powered learning assistant. Choose your mode and explore smart learning.</p>
@@ -141,7 +140,6 @@ st.markdown(
 # Choose Mode Section
 # ========================
 st.markdown("## 🎓 Choose Your Learning Mode")
-
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -151,7 +149,8 @@ with col1:
             <h3>📘 Simple Answer</h3>
             <p>Quick, clear explanations to understand the basics instantly.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True
+    )
     simple_topic = st.text_input("Enter Topic (Simple)", key="simple")
     simple_gen = st.button("Generate (Simple)", key="simple_btn")
 
@@ -162,7 +161,8 @@ with col2:
             <h3>🔬 Deep Research</h3>
             <p>Detailed breakdown with real-world applications and examples.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True
+    )
     deep_topic = st.text_input("Enter Topic (Deep)", key="deep")
     deep_gen = st.button("Generate (Deep)", key="deep_btn")
 
@@ -173,7 +173,8 @@ with col3:
             <h3>🧠 Generate Quiz</h3>
             <p>Challenge yourself with instant AI-created quiz questions.</p>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True
+    )
     quiz_topic = st.text_input("Topic for Quiz", key="quiz")
     quiz_gen = st.button("Generate Quiz", key="quiz_btn")
 
