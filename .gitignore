@@ -1,7 +1,6 @@
 # Environment
 .env
-.streamelit/secrets.toml
-
+.streamelit/
 # Python
 __pycache__/
 *.pyc
