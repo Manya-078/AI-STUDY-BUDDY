@@ -1,5 +1,6 @@
 # Environment
 .env
+.streamelit/secrets.toml
 
 # Python
 __pycache__/
